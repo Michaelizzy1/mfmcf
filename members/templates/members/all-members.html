@@ -1,0 +1,42 @@
+{% extends 'members/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="container">
+<p></p>
+<p></p>
+<h1 class="text-center">ALL MEMBERS</h1>
+{% for member in members %}
+
+<section>
+<ol>
+<body>
+
+ <li class="meetup-item">
+                <article>
+                    <div class="meetup-summary">
+                        <div class="meetup-image">
+                            <img src="{{image}}" alt="{{title}}">
+                        </div>
+                        <div class="meetup-details">
+                            <h3>{{member.name}}</h3>
+                            <address>{{member.address}}</address>
+                            <p></p>
+                            <p>{{member.phone_number}}</p>
+
+                        </div>
+                    </div>
+                        <div class="meetup-actions">
+                            <a href="{% url 'profile' member.id %}" class="btn">Profile</a>
+                        </div>
+                </article>
+ </li>
+</body>
+</ol>
+</section>
+{% endfor %}
+
+</div>
+{% endblock %}

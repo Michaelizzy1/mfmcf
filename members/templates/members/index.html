@@ -1,0 +1,75 @@
+{% extends 'members/base.html' %}
+
+{% block content %}
+
+<div class="container">
+    <p></p>
+    <h1 class="text-center">
+        MFM CAMPUS FELLOWSHIP
+    </h1>
+    {% if messages %}
+
+            {% for message in messages %}
+
+                    <div class="alert alert-success" role="alert">
+                        {{message}}
+                    </div>
+
+            {% endfor %}
+
+    {% endif %}
+    <form method="POST" action="">
+        {% csrf_token %}
+        <div class="">
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">NAME: </label>
+            {{form.name}}
+         </div>
+            <p></p>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">DEPARTMENT: </label>
+            {{form.department}}
+         </div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">ADDRESS: </label>
+            {{form.address}}
+         </div>
+            <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">PHONE NUMBER:</label>
+            {{form.phone_number}}
+         </div>
+            <p></p>
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Level</label>
+                <select {{form.level}}/>
+                <option selected>Choose...</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+                <option value="300">300</option>
+                <option value="400">400</option>
+                <option value="400">500</option>
+                </select>
+            </div>
+
+            <p></p>
+            <div class="mb-3">
+            <label>DATE OF BIRTH: </label>
+            {{form.date_of_birth}}
+         </div>
+            <p></p>
+            <div class="d-grid gap-2">
+                <button class="btn btn-primary" type="submit">Save</button>
+            </div>
+        </div>
+    </form>
+</div>
+<p></p>
+<p></p>
+
+<div class="text-center">
+    <h4>
+        <a href="{% url 'all-members' %}">View All Members</a>
+    </h4>
+</div>
+
+{% endblock %}
