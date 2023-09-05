@@ -9,9 +9,10 @@ from django.contrib import messages
 def index(request):
     form = MemberForm()
     if request.method == "POST":
-        form = MemberForm(request.POST)
+        form = MemberForm(data=request.POST, files=request.FILES)
         if form.is_valid():
             form.save()
+            obj = form.instance
             messages.success(request, 'Your record has been successfully saved!!!')
             return redirect('index')
     context = {
